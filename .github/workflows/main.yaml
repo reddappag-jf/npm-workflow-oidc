@@ -34,15 +34,15 @@ jobs:
       - name: Set up JFrog CLI
         uses: jfrog/setup-jfrog-cli@v4
         with:
-          oidc-provider-name: red-new
+          oidc-provider-name: reddappag
           # Add oidc-audience if your Artifactory OIDC integration requires it
 
       # Step 4: Configure npm to use JFrog Artifactory
       - name: Configure npm registry
         run: |
           jf npm-config \
-            --repo-resolve=gaction-npm \
-            --repo-deploy=gaction-npm
+            --repo-resolve=rg-gactions-npm \
+            --repo-deploy=rg-gactions-npm
 
       # Step 5: Install dependencies
       - name: Install dependencies
