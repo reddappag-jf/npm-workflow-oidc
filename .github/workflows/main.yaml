@@ -19,54 +19,52 @@ env:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+
     steps:
-      # Step 1: Check out the repository
+
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Step 2: Set up Node.js environment
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
 
-      # Step 3: Set up JFrog CLI with OIDC
       - name: Set up JFrog CLI
         uses: jfrog/setup-jfrog-cli@v4
         with:
           oidc-provider-name: reddappag
-          # Add oidc-audience if your Artifactory OIDC integration requires it
 
-      # Step 4: Configure npm to use JFrog Artifactory
       - name: Configure npm registry
         run: |
           jf npm-config \
             --repo-resolve=rg-gactions-npm \
             --repo-deploy=rg-gactions-npm
 
-      # Step 5: Install dependencies
       - name: Install dependencies
-        run: jf npm install
+        run: |
+          jf npm install \
+            --build-name=my-npm-build \
+            --build-number=${{ github.run_number }}
 
-      # Step 6: Build the project
       - name: Build the project
         run: jf npm run build
 
-      # Step 7: Upload build artifacts to GitHub
       - name: Upload build artifacts to GitHub
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: dist/**/*
 
-      # Step 8: Upload build output to Artifactory
-      - name: Upload build output to Artifactory
+      - name: Publish npm package to Artifactory
         run: |
           jf npm publish \
             --build-name=my-npm-build \
             --build-number=${{ github.run_number }}
 
-      # Step 9: Publish Build Info
       - name: Publish Build Info
         run: |
-          jf rt build-publish reddappag-npm-build ${{ github.run_number }} --project rg
+          jf rt build-publish \
+            my-npm-build \
+            ${{ github.run_number }} \
+            --project rg
