@@ -69,4 +69,4 @@ jobs:
       # Step 9: Publish Build Info
       - name: Publish Build Info
         run: |
-          jf rt build-publish my-npm-build ${{ github.run_number }}
+          jf rt build-publish reddappag-npm-build ${{ github.run_number }} --project rg
