@@ -44,7 +44,7 @@ jobs:
       - name: Install dependencies
         run: |
           jf npm install \
-            --build-name=my-npm-build \
+            --build-name=red-new \
             --build-number=${{ github.run_number }}
 
       - name: Build the project
@@ -59,12 +59,12 @@ jobs:
       - name: Publish npm package to Artifactory
         run: |
           jf npm publish \
-            --build-name=my-npm-build \
+            --build-name=red-new \
             --build-number=${{ github.run_number }}
 
       - name: Publish Build Info
         run: |
           jf rt build-publish \
-            my-npm-build \
+            red-new \
             ${{ github.run_number }} \
             --project rg
