@@ -1,5 +1,5 @@
 {
-  "name": "minimal-nodejs-app",
+  "name": "new-minimal-nodejs-app",
   "version": "1.0.0",
   "description": "A minimal Node.js task manager project with a build process",
   "main": "dist/bundle.js",
