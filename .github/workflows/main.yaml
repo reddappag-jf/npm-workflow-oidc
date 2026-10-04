@@ -44,8 +44,7 @@ jobs:
       - name: Install dependencies
         run: |
           jf npm install \
-            --build-name=red-new \
-            --build-number=${{ github.run_number }}
+           
 
       - name: Build the project
         run: jf npm run build
