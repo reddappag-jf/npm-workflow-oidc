@@ -14,7 +14,7 @@ permissions:
   contents: read
 
 env:
-  JF_URL: ${{ vars.ARTIFACTORY_URL }}
+  JF_URL: ${{ vars.JF_URL }}
 
 jobs:
   build-and-publish:
