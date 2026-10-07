@@ -29,4 +29,4 @@ jobs:
           JF_GIT_BASE_BRANCH: ${{ matrix.branch }}
         with:
            oidc-provider-name: reddappag
-           audience: reddappag
+           oidc-audience: reddappag
