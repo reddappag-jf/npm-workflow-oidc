@@ -19,6 +19,7 @@ jobs:
       - uses: jfrog/frogbot@v2
         env:
           JF_URL: ${{ vars.JF_URL }}
+          JF_GIT_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
            oidc-provider-name: reddappag
            oidc-audience: reddappag
