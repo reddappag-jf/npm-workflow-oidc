@@ -1,6 +1,6 @@
 {
   "name": "test-minimal-nodejs-app",
-  "version": "2.3.3",
+  "version": "3.3.3",
   "description": "A minimal Node.js task manager project with a build process",
   "main": "dist/bundle.js",
   "scripts": {
